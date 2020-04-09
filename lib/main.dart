@@ -1,32 +1,25 @@
 import 'package:flutter/material.dart';
 
-//INITIALIZING THE APP
+const String home = "Home";
 
-void main() => runApp(APP());
+void main() => runApp(Panthion());
 
-class APP extends StatelessWidget {
+class Panthion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Panthion',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.red,
       ),
-      home: Home(),
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text(home),
+          ),
+          body: Home()),
     );
   }
 }
-
-//CREATING BUTTONS FOR HOME SCREEN
 
 class Home extends StatelessWidget {
   @override
@@ -35,25 +28,76 @@ class Home extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          RaisedButton(
-            child: Text("Button 1"),
-            onPressed: () {},
+          FlatButton(
+            color: Colors.transparent,
+            textColor: Colors.red,
+            padding: const EdgeInsets.all(20),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(35),
+              side: BorderSide(color: Colors.red, width: 3),
+            ),
+            child: Text(
+              "Button 1",
+              style: TextStyle(fontSize: 50),
+            ),
+            onPressed: () {
+              Scaffold.of(context).showSnackBar(
+                  SnackBar(content: Text("Button 1 has been pressed")));
+            },
           ),
-          RaisedButton(
-            child: Text("Button 2"),
-            onPressed: () {},
+          FlatButton(
+            color: Colors.transparent,
+            textColor: Colors.red,
+            padding: const EdgeInsets.all(20),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(35),
+              side: BorderSide(color: Colors.red, width: 3),
+            ),
+            child: Text(
+              "Button 2",
+              style: TextStyle(fontSize: 50),
+            ),
+            onPressed: () {
+              Scaffold.of(context).showSnackBar(
+                  SnackBar(content: Text("Button 2 has been pressed")));
+            },
           ),
-          RaisedButton(
-            child: Text("Button 3"),
-            onPressed: () {},
+          FlatButton(
+            color: Colors.transparent,
+            textColor: Colors.red,
+            padding: const EdgeInsets.all(20),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(35),
+              side: BorderSide(color: Colors.red, width: 3),
+            ),
+            child: Text(
+              "Button 3",
+              style: TextStyle(fontSize: 50),
+            ),
+            onPressed: () {
+              Scaffold.of(context).showSnackBar(
+                  SnackBar(content: Text("Button 3 has been pressed")));
+            },
           ),
-          RaisedButton(
-            child: Text("Button 4"),
-            onPressed: () {},
+          FlatButton(
+            color: Colors.transparent,
+            textColor: Colors.red,
+            padding: const EdgeInsets.all(20),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(35),
+              side: BorderSide(color: Colors.red, width: 3),
+            ),
+            child: Text(
+              "Button 4",
+              style: TextStyle(fontSize: 50),
+            ),
+            onPressed: () {
+              Scaffold.of(context).showSnackBar(
+                  SnackBar(content: Text("Button 4 has been pressed")));
+            },
           ),
         ],
       ),
     );
   }
 }
-
