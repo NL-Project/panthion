@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:pdftron_flutter/pdftron_flutter.dart';
 
 const String home = "Home";
@@ -59,30 +60,48 @@ class _HomeState extends State<Home> {
           children: <Widget>[
             HomeButton(
               "Open Document",
-                  // TODO: doesn't work without internet
-                  () => PdftronFlutter.openDocument(
+              // TODO: doesn't work without internet
+              () => PdftronFlutter.openDocument(
                   "https://file-examples.com/wp-content/uploads/2017/02/file-sample_1MB.docx"),
             ),
             HomeButton(
               "Button 2",
-                  () {
-                Scaffold.of(context).showSnackBar(
-                    SnackBar(content: Text("Button 2 has been pressed")));
-              },
+              () => Navigator.of(context).push(
+                PageTransition(
+                  type: PageTransitionType.rightToLeft,
+                  child: Scaffold(
+                    appBar: AppBar(
+                      title: Text("Empty Screen"),
+                    ),
+                  ),
+                ),
+              ),
             ),
             HomeButton(
               "Button 3",
-                  () {
-                Scaffold.of(context).showSnackBar(
-                    SnackBar(content: Text("Button 3 has been pressed")));
-              },
+              () => Navigator.of(context).push(
+                PageTransition(
+                  type: PageTransitionType.rightToLeft,
+                  child: Scaffold(
+                    appBar: AppBar(
+                      title: Text("Empty Screen"),
+                    ),
+                  ),
+                ),
+              ),
             ),
             HomeButton(
               "Button 4",
-                  () {
-                Scaffold.of(context).showSnackBar(
-                    SnackBar(content: Text("Button 4 has been pressed")));
-              },
+              () => Navigator.of(context).push(
+                PageTransition(
+                  type: PageTransitionType.rightToLeft,
+                  child: Scaffold(
+                    appBar: AppBar(
+                      title: Text("Empty Screen"),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
         ),
