@@ -28,76 +28,60 @@ class Home extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          FlatButton(
-            color: Colors.transparent,
-            textColor: Colors.red,
-            padding: const EdgeInsets.all(20),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(35),
-              side: BorderSide(color: Colors.red, width: 3),
-            ),
-            child: Text(
-              "Button 1",
-              style: TextStyle(fontSize: 50),
-            ),
-            onPressed: () {
+          HomeButton(
+            "Button 1",
+            () {
               Scaffold.of(context).showSnackBar(
                   SnackBar(content: Text("Button 1 has been pressed")));
             },
           ),
-          FlatButton(
-            color: Colors.transparent,
-            textColor: Colors.red,
-            padding: const EdgeInsets.all(20),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(35),
-              side: BorderSide(color: Colors.red, width: 3),
-            ),
-            child: Text(
-              "Button 2",
-              style: TextStyle(fontSize: 50),
-            ),
-            onPressed: () {
+          HomeButton(
+            "Button 2",
+            () {
               Scaffold.of(context).showSnackBar(
                   SnackBar(content: Text("Button 2 has been pressed")));
             },
           ),
-          FlatButton(
-            color: Colors.transparent,
-            textColor: Colors.red,
-            padding: const EdgeInsets.all(20),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(35),
-              side: BorderSide(color: Colors.red, width: 3),
-            ),
-            child: Text(
-              "Button 3",
-              style: TextStyle(fontSize: 50),
-            ),
-            onPressed: () {
+          HomeButton(
+            "Button 3",
+            () {
               Scaffold.of(context).showSnackBar(
                   SnackBar(content: Text("Button 3 has been pressed")));
             },
           ),
-          FlatButton(
-            color: Colors.transparent,
-            textColor: Colors.red,
-            padding: const EdgeInsets.all(20),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(35),
-              side: BorderSide(color: Colors.red, width: 3),
-            ),
-            child: Text(
-              "Button 4",
-              style: TextStyle(fontSize: 50),
-            ),
-            onPressed: () {
+          HomeButton(
+            "Button 4",
+            () {
               Scaffold.of(context).showSnackBar(
                   SnackBar(content: Text("Button 4 has been pressed")));
             },
           ),
         ],
       ),
+    );
+  }
+}
+
+class HomeButton extends StatelessWidget {
+  String _text;
+  Function _onPressed;
+  HomeButton(this._text, this._onPressed);
+
+  @override
+  Widget build(BuildContext context) {
+    return FlatButton(
+      color: Colors.transparent,
+      textColor: Colors.red,
+      padding: const EdgeInsets.all(20),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(35),
+        side: BorderSide(color: Colors.red, width: 3),
+      ),
+      child: Text(
+        _text,
+        style: TextStyle(fontSize: 50),
+      ),
+      onPressed: _onPressed,
     );
   }
 }
