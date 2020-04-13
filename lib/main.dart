@@ -70,14 +70,13 @@ class _HomeState extends State<Home> {
                 PageTransition(
                   type: PageTransitionType.rightToLeft,
                   child: Scaffold(
-                        appBar: AppBar(
-                          title: Text("Empty Screen"),
-                        ),
-                      ),
-                ),
-
+                    appBar: AppBar(
+                      title: Text("Empty Screen"),
+                    ),
+                  ),
                 ),
               ),
+            ),
             HomeButton(
               "Button 3",
               () => Navigator.of(context).push(
