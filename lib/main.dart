@@ -16,8 +16,9 @@ class Panthion extends StatelessWidget {
       ),
       home: Scaffold(
           appBar: AppBar(
-            title: Text(home),
+            title: Text('Welcome, USER'),
           ),
+          backgroundColor: Colors.teal[100],
           body: Home()),
     );
   }
@@ -59,7 +60,7 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             HomeButton(
-              "Open Document",
+              "Instructions",
               // TODO: doesn't work without internet
               () => PdftronFlutter.openDocument(
                   "https://file-examples.com/wp-content/uploads/2017/02/file-sample_1MB.docx"),
@@ -117,19 +118,17 @@ class HomeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: FlatButton(
-        color: Colors.transparent,
-        textColor: Colors.red,
-        padding: const EdgeInsets.all(20),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(35),
-          side: BorderSide(color: Colors.red, width: 3),
-        ),
+    return SizedBox.expand(
+      child: RaisedButton(
+        elevation: 6,
+        color: Colors.deepOrangeAccent,
+        textColor: Colors.white,
+        padding: const EdgeInsets.all(25),
+        shape: StadiumBorder(
+          ),
         child: Text(
           _text,
-          style: TextStyle(fontSize: 40),
+          style: TextStyle(fontSize: 30),
         ),
         onPressed: _onPressed,
       ),
