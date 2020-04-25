@@ -51,11 +51,9 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    var mainWidget = Center(
       child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: 10.0,
-        ),
+        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -108,6 +106,12 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
+    return OrientationBuilder(
+        builder: (context, orientation) => orientation == Orientation.portrait
+            ? mainWidget
+            : SingleChildScrollView(
+                child: mainWidget,
+              ));
   }
 }
 
@@ -118,20 +122,22 @@ class HomeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: RaisedButton(
-        elevation: 6,
-        color: Colors.deepOrangeAccent,
-        textColor: Colors.white,
-        padding: const EdgeInsets.all(25),
-        shape: StadiumBorder(
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+        width: 280,
+        child: RaisedButton(
+          elevation: 6,
+          color: Colors.deepOrangeAccent,
+          textColor: Colors.white,
+          padding: const EdgeInsets.all(25),
+          shape: StadiumBorder(),
+          child: Text(
+            _text,
+            style: TextStyle(fontSize: 30),
           ),
-        child: Text(
-          _text,
-          style: TextStyle(fontSize: 30),
+          onPressed: _onPressed,
         ),
-        onPressed: _onPressed,
       ),
     );
   }
