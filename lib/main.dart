@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:panthion/home.dart';
 
@@ -11,8 +12,17 @@ class Panthion extends StatelessWidget {
     return MaterialApp(
       title: 'Panthion',
       theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
+          brightness: Brightness.light,
+          primaryColor: Colors.indigo,
+          accentColor: Colors.white,
+          buttonTheme: ButtonThemeData(
+              buttonColor: Colors.indigo,
+              shape: StadiumBorder(),
+              textTheme: ButtonTextTheme.accent),
+          appBarTheme: AppBarTheme(color: Colors.indigo),
+          primaryTextTheme: TextTheme(
+              title: TextStyle(color: Colors.white, fontSize: 26),
+              headline: TextStyle(color: Colors.white, fontSize: 40))),
       home: Home(),
     );
   }

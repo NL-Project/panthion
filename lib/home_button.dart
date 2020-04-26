@@ -13,8 +13,7 @@ class HomeButton extends StatelessWidget {
         width: 280,
         child: RaisedButton(
           elevation: 6,
-          color: Colors.deepOrangeAccent,
-          textColor: Colors.white,
+          color: Theme.of(context).primaryColor,
           padding: const EdgeInsets.all(25),
           shape: StadiumBorder(),
           child: Text(

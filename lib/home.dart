@@ -4,6 +4,8 @@ import 'package:pdftron_flutter/pdftron_flutter.dart';
 
 import 'home_button.dart';
 
+final List<String> duties = <String>['23.05.2020', '24.05.2020', '25.05.2020'];
+
 class Home extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _HomeState();
@@ -87,9 +89,15 @@ class _HomeState extends State<Home> {
       ),
     );
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Hello, User!"),
-      ),
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(150),
+          child: AppBar(
+              centerTitle: true,
+              flexibleSpace: FlexibleSpaceBar(
+                title: Text("Next duty is on ${duties[0]}!"),
+                centerTitle: true,
+              ),
+              title: Text("Welcome, User!"))),
       body: OrientationBuilder(
         builder: (context, orientation) => orientation == Orientation.portrait
             ? mainWidget
