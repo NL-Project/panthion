@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:pdftron_flutter/pdftron_flutter.dart';
 
+import 'calendar.dart';
+
 const String home = "Home";
 
 void main() => runApp(Panthion());
@@ -94,11 +96,7 @@ class _HomeState extends State<Home> {
               () => Navigator.of(context).push(
                 PageTransition(
                   type: PageTransitionType.rightToLeft,
-                  child: Scaffold(
-                    appBar: AppBar(
-                      title: Text("Empty Screen"),
-                    ),
-                  ),
+                  child: Calendar(),
                 ),
               ),
             ),
