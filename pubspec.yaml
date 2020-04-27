@@ -29,6 +29,7 @@ dependencies:
       url: git://github.com/PDFTron/pdftron-flutter.git
   permission_handler: '3.0.1'
   page_transition: ^1.1.5
+  table_calendar: ^2.2.3
 
 dev_dependencies:
   flutter_test:
