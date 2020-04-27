@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:panthion/home.dart';
 
-import 'calendar.dart';
-
 const String home = "Home";
 
 void main() => runApp(Panthion());

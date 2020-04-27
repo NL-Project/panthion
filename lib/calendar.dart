@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 final Map<DateTime, List> _duties = {
-  DateTime(2020, 6, 1): ['Duuty 1'],
+  DateTime(2020, 6, 1): ['Duty 1'],
   DateTime(2020, 5, 6): ['Duty 2'],
   DateTime(2020, 5, 14): ['Duty 3'],
   DateTime(2020, 4, 27): ['Duty 4'],
@@ -27,7 +27,7 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
 
     _events = _duties;
 
-    _selectedEvents = _events[_selectedDay] ?? [];
+    _selectedEvents = _events[DateTime(_selectedDay.year, _selectedDay.month, _selectedDay.day)] ?? [];
     _calendarController = CalendarController();
 
     _animationController = AnimationController(
@@ -46,136 +46,68 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
   }
 
   void _onDaySelected(DateTime day, List events) {
-    print('CALLBACK: _onDaySelected');
     setState(() {
       _selectedEvents = events;
     });
   }
 
-  void _onVisibleDaysChanged(
-      DateTime first, DateTime last, CalendarFormat format) {
-    print('CALLBACK: _onVisibleDaysChanged');
-  }
-
-  void _onCalendarCreated(
-      DateTime first, DateTime last, CalendarFormat format) {
-    print('CALLBACK: _onCalendarCreated');
-  }
-
-  Widget _buildTableCalendar() {
+  Widget _buildTableCalendar(Orientation orientation) {
     return TableCalendar(
       calendarController: _calendarController,
       events: _events,
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
-        selectedColor: Colors.deepOrange[400],
-        todayColor: Colors.deepOrange[200],
-        markersColor: Colors.brown[700],
+        selectedColor: Theme.of(context).primaryColorLight,
+        todayColor: Colors.grey,
+        markersColor: Theme.of(context).primaryColor,
         outsideDaysVisible: false,
       ),
       headerStyle: HeaderStyle(
-        formatButtonTextStyle:
-            TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
-        formatButtonDecoration: BoxDecoration(
-          color: Colors.deepOrange[400],
-          borderRadius: BorderRadius.circular(16.0),
-        ),
+        formatButtonShowsNext: false,
       ),
       onDaySelected: _onDaySelected,
-      onVisibleDaysChanged: _onVisibleDaysChanged,
-      onCalendarCreated: _onCalendarCreated,
-    );
-  }
-
-  Widget _buildButtons() {
-    final dateTime = _events.keys.elementAt(_events.length - 2);
-
-    return Column(
-      children: <Widget>[
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            RaisedButton(
-              child: Text('Month'),
-              onPressed: () {
-                setState(() {
-                  _calendarController.setCalendarFormat(CalendarFormat.month);
-                });
-              },
-            ),
-            RaisedButton(
-              child: Text('2 weeks'),
-              onPressed: () {
-                setState(() {
-                  _calendarController
-                      .setCalendarFormat(CalendarFormat.twoWeeks);
-                });
-              },
-            ),
-            RaisedButton(
-              child: Text('Week'),
-              onPressed: () {
-                setState(() {
-                  _calendarController.setCalendarFormat(CalendarFormat.week);
-                });
-              },
-            ),
-          ],
-        ),
-        const SizedBox(height: 8.0),
-        RaisedButton(
-          child: Text(
-              'Set day ${dateTime.day}-${dateTime.month}-${dateTime.year}'),
-          onPressed: () {
-            _calendarController.setSelectedDay(
-              DateTime(dateTime.year, dateTime.month, dateTime.day),
-              runCallback: true,
-            );
-          },
-        ),
-      ],
     );
   }
 
   Widget _buildEventList() {
     return ListView(
       children: _selectedEvents
-          .map((event) => Container(
-                decoration: BoxDecoration(
-                  border: Border.all(width: 0.8),
-                  borderRadius: BorderRadius.circular(12.0),
+          .map(
+            (event) => Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 0.8,
+                  color: Theme.of(context).primaryColor,
                 ),
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                child: ListTile(
-                  title: Text(event.toString()),
-                  onTap: () => print('$event tapped!'),
-                ),
-              ))
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              margin:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+              child: ListTile(
+                title: Text(event.toString()),
+                onTap: () => print('$event tapped!'),
+              ),
+            ),
+          )
           .toList(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    var scaffold = Scaffold(
       appBar: AppBar(
         title: Text("Calendar"),
       ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          // Switch out 2 lines below to play with TableCalendar's settings
-          //-----------------------
-          _buildTableCalendar(),
-          // _buildTableCalendarWithBuilders(),
-          const SizedBox(height: 8.0),
-          _buildButtons(),
+          _buildTableCalendar(MediaQuery.of(context).orientation),
           const SizedBox(height: 8.0),
           Expanded(child: _buildEventList()),
         ],
       ),
     );
+    return scaffold;
   }
 }
