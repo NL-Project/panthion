@@ -3,6 +3,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:panthion/calendar.dart';
 import 'package:pdftron_flutter/pdftron_flutter.dart';
 
+import 'Marks.dart';
 import 'home_button.dart';
 
 final List<String> duties = <String>['23.05.2020', '24.05.2020', '25.05.2020'];
@@ -34,7 +35,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    var mainWidget = Center(
+     var mainWidget = Center(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
         child: Column(
@@ -43,12 +44,12 @@ class _HomeState extends State<Home> {
             HomeButton(
               "Instructions",
               // TODO: doesn't work without internet
-              () => PdftronFlutter.openDocument(
+                  () => PdftronFlutter.openDocument(
                   "https://file-examples.com/wp-content/uploads/2017/02/file-sample_1MB.docx"),
             ),
             HomeButton(
               "Button 2",
-              () => Navigator.of(context).push(
+                  () => Navigator.of(context).push(
                 PageTransition(
                   type: PageTransitionType.rightToLeft,
                   child: Scaffold(
@@ -60,8 +61,17 @@ class _HomeState extends State<Home> {
               ),
             ),
             HomeButton(
+              "Mark Button",
+                  () => Navigator.of(context).push(
+                PageTransition(
+                  type: PageTransitionType.rightToLeft,
+                  child: Marks(),
+                ),
+              ),
+            ),
+            HomeButton(
               "Button 3",
-              () => Navigator.of(context).push(
+                  () => Navigator.of(context).push(
                 PageTransition(
                   type: PageTransitionType.rightToLeft,
                   child: Scaffold(
@@ -74,13 +84,14 @@ class _HomeState extends State<Home> {
             ),
             HomeButton(
               "Button 4",
-              () => Navigator.of(context).push(
+                  () => Navigator.of(context).push(
                 PageTransition(
                   type: PageTransitionType.rightToLeft,
                   child: Calendar(),
                 ),
               ),
             ),
+
           ],
         ),
       ),
@@ -99,8 +110,8 @@ class _HomeState extends State<Home> {
         builder: (context, orientation) => orientation == Orientation.portrait
             ? mainWidget
             : SingleChildScrollView(
-                child: mainWidget,
-              ),
+          child: mainWidget,
+        ),
       ),
     );
   }

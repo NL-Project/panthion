@@ -26,3 +26,62 @@ class HomeButton extends StatelessWidget {
     );
   }
 }
+
+class MarkButton extends StatelessWidget {
+  String _text;
+  Function dosomething;
+  MarkButton(this._text, this.dosomething);
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+        width: 80,
+        child: RaisedButton(
+          elevation: 3,
+          color: Theme.of(context).primaryColor,
+          padding: const EdgeInsets.all(15),
+          shape: StadiumBorder(),
+          child: Text(
+            _text,
+            style: TextStyle(fontSize: 20),
+          ),
+          onPressed: dosomething,
+        ),
+      ),
+
+
+
+
+    );
+  }
+}
+
+class OldMarkButton extends StatelessWidget {
+  String _text;
+  Function dosomething;
+  OldMarkButton(this._text, this.dosomething);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+        width: 80,
+        child: RaisedButton(
+          elevation: 3,
+          color: Theme.of(context).primaryColor,
+          padding: const EdgeInsets.all(15),
+          shape: StadiumBorder(),
+          child: Text(
+            _text,
+            style: TextStyle(fontSize: 20),
+          ),
+          onPressed: dosomething,
+        ),
+      ),
+    );
+  }
+}
