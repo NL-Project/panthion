@@ -1,0 +1,1 @@
+final Map<String, String> values = {'Mark 1': 'Ha-ha-ha', 'Mark2': 'Bla-bla', 'Mark3' : 'OK, not funny'}; //в значение будем заносить первые 10 символов, например

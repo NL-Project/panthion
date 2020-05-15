@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
 import 'home_button.dart';
+import 'MarkButton.dart';
+import 'AllMarks.dart';
 
 class Marks extends StatefulWidget {
   @override
@@ -16,9 +18,6 @@ class _MarksState extends State<Marks> {
 
   @override
   Widget build(BuildContext context) {
-
-
-    final Map<String, String> values = {'Mark 1': 'Bla-bla-bla', 'Mark2': 'Bla-bla', 'Mark3' : 'OK, not funny'}; //в значение будем заносить первые 10 символов, например
 
 
     var markWidget = BottomAppBar(
@@ -64,19 +63,7 @@ class _MarksState extends State<Marks> {
                               () => Navigator.of(context).push(
                             PageTransition(
                               type: PageTransitionType.rightToLeft,
-                              child: Scaffold(
-                                appBar: AppBar(
-                                  title: Text("$key"),
-                                ),
-                                body: Column(
-                                  children: <Widget>[
-                                    Container(
-                                        child: TextFormField(maxLines: 50)
-                                    )
-                                  ],
-                                ),
-
-                              ),
+                              child: oldMark("$key", "${values[key]}")
                             ),
                           ),
 
