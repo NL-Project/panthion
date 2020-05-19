@@ -2,29 +2,21 @@ import 'package:flutter/material.dart';
 
 import 'AllMarks.dart';
 
-
-class oldMark extends StatefulWidget {
-  String _titletext;
+class OldMark extends StatefulWidget {
+  String titletext;
   String _marktext;
 
-  oldMark(String titletext, String marktext) {
-    this._titletext = titletext;
+  OldMark(String titletext, String marktext) {
+    this.titletext = titletext;
     this._marktext = marktext;
   }
   @override
-  State<StatefulWidget> createState() => _oldMarkState();
+  State<StatefulWidget> createState() => _OldMarkState();
 }
 
-
-class _oldMarkState extends State<oldMark> {
-
+class _OldMarkState extends State<OldMark> {
   String _titletext;
   String _marktext;
-
-  oldMark(String titletext, String marktext) {
-    this._titletext = titletext;
-    this._marktext = marktext;
-  }
 
   bool _isEditingText = false;
   TextEditingController _editingController;
@@ -33,7 +25,7 @@ class _oldMarkState extends State<oldMark> {
   @override
   void initState() {
     super.initState();
-    _editingController = TextEditingController(text: initialText);
+    _editingController = TextEditingController(text: widget._marktext);
   }
 
   @override
@@ -46,10 +38,10 @@ class _oldMarkState extends State<oldMark> {
     if (_isEditingText)
       return Center(
         child: TextField(
-          onSubmitted: (newValue){
+          onSubmitted: (newValue) {
             setState(() {
-              initialText = _marktext;
-              _isEditingText =false;
+              initialText = widget._marktext;
+              _isEditingText = false;
             });
           },
           autofocus: true,
@@ -63,7 +55,7 @@ class _oldMarkState extends State<oldMark> {
         });
       },
       child: Text(
-        initialText,
+        widget._marktext,
         style: TextStyle(
           color: Colors.black,
           fontSize: 18.0,
@@ -72,14 +64,11 @@ class _oldMarkState extends State<oldMark> {
     );
   }
 
-
-
   @override
-  Widget build(BuildContext context){
-
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_titletext??'default value'),
+        title: Text(widget.titletext ?? 'default value'),
       ),
       body: Center(
         child: _editTitleTextField(),
@@ -87,6 +76,3 @@ class _oldMarkState extends State<oldMark> {
     );
   }
 }
-
-
-

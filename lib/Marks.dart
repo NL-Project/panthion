@@ -63,7 +63,7 @@ class _MarksState extends State<Marks> {
                               () => Navigator.of(context).push(
                             PageTransition(
                               type: PageTransitionType.rightToLeft,
-                              child: oldMark("$key", "${values[key]}")
+                              child: OldMark("$key", "${values[key]}")
                             ),
                           ),
 
