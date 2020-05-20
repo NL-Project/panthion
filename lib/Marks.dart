@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:panthion/NewMark.dart';
 
 import 'home_button.dart';
 import 'MarkButton.dart';
 import 'AllMarks.dart';
+import 'NewMark.dart';
 
 class Marks extends StatefulWidget {
   @override
@@ -32,20 +34,7 @@ class _MarksState extends State<Marks> {
                   () => Navigator.of(context).push(
                 PageTransition(
                   type: PageTransitionType.rightToLeft,
-                  child: Scaffold(
-                    appBar: AppBar(
-                      title: Text("New Mark"),
-                    ),
-                    body: Column(
-                      children: <Widget>[
-                        Container(
-                            child: TextFormField(maxLines: 50)
-                        )
-
-                      ],
-                    ),
-
-                  ),
+                  child: NewMark("New Mark","Write here...")
                 ),
               ),
             ),

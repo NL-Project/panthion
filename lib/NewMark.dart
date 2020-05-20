@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'AllMarks.dart';
 
-class OldMark extends StatefulWidget {
+class NewMark extends StatefulWidget {
 
   String titletext;
   String _marktext;
 
 
-  OldMark(String titletext, String marktext) {
+  NewMark(String titletext, String marktext) {
     this.titletext = titletext;
     this._marktext = marktext;
 
@@ -16,11 +16,11 @@ class OldMark extends StatefulWidget {
 
 
   @override
-  State<StatefulWidget> createState() => _OldMarkState();
+  State<StatefulWidget> createState() => _NewMarkState();
 
 }
 
-class _OldMarkState extends State<OldMark> {
+class _NewMarkState extends State<NewMark> {
 
 
 
@@ -30,6 +30,8 @@ class _OldMarkState extends State<OldMark> {
   bool _isEditingText = false;
   TextEditingController _editingController;
   String initialText = "";
+  final int len = values.length + 1;
+
 
   @override
   void initState() {
@@ -51,7 +53,7 @@ class _OldMarkState extends State<OldMark> {
           onSubmitted: (newValue) {
             setState(() {
               widget._marktext = newValue;
-              values[widget.titletext] = newValue;
+              values["Mark" + len.toString()] = widget._marktext;
               _isEditingText = false;
             });
           },
