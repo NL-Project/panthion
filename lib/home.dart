@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:panthion/calendar.dart';
 import 'package:pdftron_flutter/pdftron_flutter.dart';
-
+import 'log_in_button_2.dart';
 import 'Marks.dart';
 import 'home_button.dart';
 
@@ -48,15 +48,11 @@ class _HomeState extends State<Home> {
                   "https://file-examples.com/wp-content/uploads/2017/02/file-sample_1MB.docx"),
             ),
             HomeButton(
-              "Button 2",
+              "Logs",
                   () => Navigator.of(context).push(
                 PageTransition(
                   type: PageTransitionType.rightToLeft,
-                  child: Scaffold(
-                    appBar: AppBar(
-                      title: Text("Empty Screen"),
-                    ),
-                  ),
+                  child: Log(),
                 ),
               ),
             ),

@@ -13,13 +13,13 @@ class Panthion extends StatelessWidget {
       title: 'Panthion',
       theme: ThemeData(
           brightness: Brightness.light,
-          primaryColor: Colors.indigo,
+          primaryColor: Colors.deepPurple[300],
           accentColor: Colors.white,
           buttonTheme: ButtonThemeData(
-              buttonColor: Colors.indigo,
+              buttonColor: Colors.deepPurple[300],
               shape: StadiumBorder(),
               textTheme: ButtonTextTheme.accent),
-          appBarTheme: AppBarTheme(color: Colors.indigo),
+          appBarTheme: AppBarTheme(color: Colors.deepPurple[300]),
           primaryTextTheme: TextTheme(
               title: TextStyle(color: Colors.white, fontSize: 26),
               headline: TextStyle(color: Colors.white, fontSize: 40))),
