@@ -83,6 +83,7 @@ class _NewMarkState extends State<NewMark> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
         title: Text(widget.titletext ?? 'default value'),
       ),
       body: Center(

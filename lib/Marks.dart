@@ -24,7 +24,7 @@ class _MarksState extends State<Marks> {
 
     var markWidget = BottomAppBar(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 3),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -39,11 +39,14 @@ class _MarksState extends State<Marks> {
               ),
             ),
             Container(
-              height: 100.0,
+              height: 230.0,
               child: ListView.builder(
                 itemCount: values.length,
                 itemBuilder: (BuildContext context, int index) {
                   String key = values.keys.elementAt(index);
+                  String keytext = "${values[key]}";
+                  List speshltext = keytext.split('');
+                  if (keytext.length > 10){keytext = speshltext[0]+speshltext[1]+speshltext[2]+speshltext[3]+speshltext[4]+speshltext[5]+speshltext[6]+speshltext[7]+speshltext[8]+speshltext[9];}
                   return new Column(
                     children: <Widget>[
                       new ListTile(
@@ -57,7 +60,7 @@ class _MarksState extends State<Marks> {
                           ),
 
                         ),
-                        subtitle: new Text("${values[key]}"),
+                        subtitle: new Text(keytext),
                       ),
 
                       new Divider(

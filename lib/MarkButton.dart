@@ -49,14 +49,20 @@ class _OldMarkState extends State<OldMark> {
       return Center(
         child: TextField(
           onSubmitted: (newValue) {
+
             setState(() {
               widget._marktext = newValue;
               values[widget.titletext] = newValue;
               _isEditingText = false;
             });
+
+          },
+          onEditingComplete: (){
+            
           },
           autofocus: true,
           controller: _editingController,
+          //maxLines: 20,
         ),
       );
     return InkWell(

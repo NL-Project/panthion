@@ -36,13 +36,13 @@ class MarkButton extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(2.0),
       child: SizedBox(
-        width: 80,
+        width: 100,
         child: RaisedButton(
           elevation: 3,
           color: Theme.of(context).primaryColor,
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(3),
           shape: StadiumBorder(),
           child: Text(
             _text,
