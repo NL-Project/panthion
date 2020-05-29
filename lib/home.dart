@@ -35,19 +35,24 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-     var mainWidget = Center(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+     var mainWidget = GridView.count(
+       primary: false,
+          padding: const EdgeInsets.all(20),
+          crossAxisSpacing: 50,
+          mainAxisSpacing: 50,
+          crossAxisCount: 2,
           children: <Widget>[
             HomeButton(
+              Colors.red,
+              "assets/help.png",
               "Instructions",
               // TODO: doesn't work without internet
                   () => PdftronFlutter.openDocument(
                   "https://file-examples.com/wp-content/uploads/2017/02/file-sample_1MB.docx"),
             ),
             HomeButton(
+              Colors.green,
+              "assets/list.png",
               "Logs",
                   () => Navigator.of(context).push(
                 PageTransition(
@@ -57,15 +62,8 @@ class _HomeState extends State<Home> {
               ),
             ),
             HomeButton(
-              "Mark Button",
-                  () => Navigator.of(context).push(
-                PageTransition(
-                  type: PageTransitionType.rightToLeft,
-                  child: Marks(),
-                ),
-              ),
-            ),
-            HomeButton(
+              Colors.yellow,
+              "assets/light.png",
               "Button 3",
                   () => Navigator.of(context).push(
                 PageTransition(
@@ -79,6 +77,8 @@ class _HomeState extends State<Home> {
               ),
             ),
             HomeButton(
+              Colors.blue,
+              "assets/schedule.png",
               "Button 4",
                   () => Navigator.of(context).push(
                 PageTransition(
@@ -87,21 +87,19 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
+          ]
+     );
 
-          ],
-        ),
-      ),
-    );
     return Scaffold(
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(150),
           child: AppBar(
+            elevation: 0,
               centerTitle: true,
-              flexibleSpace: FlexibleSpaceBar(
-                title: Text("Next duty is on ${duties[0]}!"),
-                centerTitle: true,
-              ),
-              title: Text("Welcome, User!"))),
+              flexibleSpace: Padding(padding: EdgeInsets.all(50), child: Image.asset('assets/enver.png'))
+             )
+      ),
       body: OrientationBuilder(
         builder: (context, orientation) => orientation == Orientation.portrait
             ? mainWidget
