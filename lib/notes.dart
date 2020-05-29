@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:panthion/new_note.dart';
+import 'package:panthion/note_editor.dart';
+import 'package:panthion/notes_storage.dart';
 
 import 'home_button.dart';
 import 'mark_button.dart';
 import 'all_marks.dart';
-import 'new_note.dart';
+import 'note_editor.dart';
 
 class Notes extends StatefulWidget {
   @override
@@ -13,10 +14,11 @@ class Notes extends StatefulWidget {
 }
 
 class NotePreview extends StatelessWidget {
-  final String _title;
+  final int _id;
   final String _content;
+  final Function() _notifyParent;
 
-  NotePreview(this._title, this._content);
+  NotePreview(this._id, this._content, this._notifyParent);
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +27,14 @@ class NotePreview extends StatelessWidget {
         onTap: () => Navigator.of(context).push(
           PageTransition(
             type: PageTransitionType.rightToLeft,
-            child: NoteEditor(_title, _content),
+            child: NoteEditor(_id, _content, _notifyParent),
           ),
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListTile(
             title: Text(
-              _title,
+              _content,
               style: TextStyle(fontSize: 32),
             ),
             subtitle: Text(
@@ -49,11 +51,11 @@ class NotePreview extends StatelessWidget {
 class _NotesState extends State<Notes> {
   @override
   Widget build(BuildContext context) {
-    var list = ListView(
-      children: <Widget>[
-        for (int i = 0; i < 100; i++) NotePreview("Title", "Content")
-      ],
-    );
+    var list = ListView.builder(itemBuilder: (context, i) {
+      var key = NotesStorage.allNotes.keys.elementAt(i);
+      return NotePreview(key, NotesStorage.allNotes[key], () => setState(() {}));
+    },
+    itemCount: NotesStorage.allNotes.length,);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(65),
@@ -69,7 +71,10 @@ class _NotesState extends State<Notes> {
         height: 75,
         child: FittedBox(
           child: FloatingActionButton(
-            onPressed: null,
+            onPressed: () {
+              NotesStorage.createNote("Empty note");
+              setState(() {});
+            },
             child: Icon(
               Icons.add,
               size: 30,
