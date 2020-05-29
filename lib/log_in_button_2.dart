@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:panthion/AllMarks.dart';
-import 'package:panthion/MarkButton.dart';
-import 'package:panthion/NewMark.dart';
+import 'package:panthion/all_marks.dart';
+import 'package:panthion/mark_button.dart';
+import 'package:panthion/new_note.dart';
 import 'package:panthion/home.dart';
 import 'dart:core';
 class Log extends StatelessWidget{
@@ -25,7 +25,7 @@ class Log extends StatelessWidget{
                   onPressed:() => Navigator.of(context).push(
                     PageTransition(
                       type: PageTransitionType.rightToLeft,
-                      child: NewMark("New Mark","Write here..."),
+                      child: NoteEditor("New Mark","Write here..."),
                   )))
               ],
 //              shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(bottom: Radius.circular(30))),
@@ -56,7 +56,7 @@ class Log extends StatelessWidget{
                                   ListTile(
                                     title: Text(
                                       '${logs[total][1].substring(0, 35)}...',
-                                      style: Theme.of(context).textTheme.headline6)
+                                      style: Theme.of(context).textTheme.title)
                                   ),
                                   ButtonBar(
                                       alignment: MainAxisAlignment.center,

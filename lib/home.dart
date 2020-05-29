@@ -3,7 +3,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:panthion/calendar.dart';
 import 'package:pdftron_flutter/pdftron_flutter.dart';
 import 'log_in_button_2.dart';
-import 'Marks.dart';
+import 'notes.dart';
 import 'home_button.dart';
 
 final List<String> duties = <String>['23.05.2020', '24.05.2020', '25.05.2020'];
@@ -57,29 +57,16 @@ class _HomeState extends State<Home> {
               ),
             ),
             HomeButton(
-              "Mark Button",
+              "Notes",
                   () => Navigator.of(context).push(
                 PageTransition(
                   type: PageTransitionType.rightToLeft,
-                  child: Marks(),
+                  child: Notes(),
                 ),
               ),
             ),
             HomeButton(
-              "Button 3",
-                  () => Navigator.of(context).push(
-                PageTransition(
-                  type: PageTransitionType.rightToLeft,
-                  child: Scaffold(
-                    appBar: AppBar(
-                      title: Text("Empty Screen"),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            HomeButton(
-              "Button 4",
+              "Calendar",
                   () => Navigator.of(context).push(
                 PageTransition(
                   type: PageTransitionType.rightToLeft,
