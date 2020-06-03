@@ -19,7 +19,8 @@ class Panthion extends StatelessWidget {
               buttonColor: Colors.deepPurple[400],
               textTheme: ButtonTextTheme.accent),
           appBarTheme: AppBarTheme(color: Colors.deepPurple[400]),
-          primaryTextTheme: TextTheme(
+          textTheme: TextTheme(
+            button: TextStyle(color: Colors.white, fontSize: 18),
               title: TextStyle(color: Colors.white, fontSize: 26),
               headline: TextStyle(color: Colors.white, fontSize: 40))),
       home: Home(),

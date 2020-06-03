@@ -37,15 +37,15 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
      var mainWidget = GridView.count(
        primary: false,
-          padding: const EdgeInsets.all(20),
-          crossAxisSpacing: 50,
-          mainAxisSpacing: 50,
+          padding: const EdgeInsets.all(0),
+          crossAxisSpacing: 0,
+          mainAxisSpacing: 0,
           crossAxisCount: 2,
           children: <Widget>[
             HomeButton(
               Colors.red,
               "assets/help.png",
-              "Instructions",
+              "Wat te doen?",
               // TODO: doesn't work without internet
                   () => PdftronFlutter.openDocument(
                   "https://file-examples.com/wp-content/uploads/2017/02/file-sample_1MB.docx"),
@@ -53,7 +53,7 @@ class _HomeState extends State<Home> {
             HomeButton(
               Colors.green,
               "assets/list.png",
-              "Logs",
+              "Regeling",
                   () => Navigator.of(context).push(
                 PageTransition(
                   type: PageTransitionType.rightToLeft,
@@ -64,7 +64,7 @@ class _HomeState extends State<Home> {
             HomeButton(
               Colors.yellow,
               "assets/light.png",
-              "Button 3",
+              "Tips",
                   () => Navigator.of(context).push(
                 PageTransition(
                   type: PageTransitionType.rightToLeft,
@@ -79,7 +79,7 @@ class _HomeState extends State<Home> {
             HomeButton(
               Colors.blue,
               "assets/schedule.png",
-              "Button 4",
+               "Rooster",
                   () => Navigator.of(context).push(
                 PageTransition(
                   type: PageTransitionType.rightToLeft,
@@ -104,7 +104,13 @@ class _HomeState extends State<Home> {
         builder: (context, orientation) => orientation == Orientation.portrait
             ? mainWidget
             : SingleChildScrollView(
-          child: mainWidget,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                mainWidget,
+                Text('Hello', style: TextStyle(color: Colors.white))
+              ],
+            ),
         ),
       ),
     );

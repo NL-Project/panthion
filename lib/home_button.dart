@@ -10,19 +10,20 @@ class HomeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-        width: 100,
-        height: 100,
-        child: FloatingActionButton(
-          backgroundColor: _color,
-          elevation: 20,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-          child: Padding(padding: EdgeInsets.all(10), child: Image.asset(_icon)),
-          onPressed: _onPressed,
-        ),
-      ),
+    return Container(
+        padding: EdgeInsets.symmetric(horizontal: 40, vertical: 0),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              RawMaterialButton(
+                onPressed: _onPressed,
+                fillColor: _color,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                child: Container(padding: EdgeInsets.all(15),child: Image.asset(_icon)),
+              ),
+              Text(_text, style: Theme.of(context).textTheme.button)
+            ]
+        )
     );
   }
 }
