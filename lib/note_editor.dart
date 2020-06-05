@@ -10,10 +10,10 @@ import 'all_marks.dart';
 
 class NoteEditor extends StatefulWidget {
   final int _noteId;
-  final String _note;
   final Function() _notifyParent;
+  final bool _isNew;
 
-  NoteEditor(this._noteId, this._note, this._notifyParent);
+  NoteEditor(this._noteId, this._notifyParent, this._isNew);
 
   @override
   State<StatefulWidget> createState() => _NoteEditorState();
@@ -59,17 +59,16 @@ class _NoteEditorState extends State<NoteEditor> {
 
   /// Loads the document to be edited in Zefyr.
   NotusDocument _loadDocument() {
-    final Delta delta = Delta()..insert(widget._note + "\n");
-    return NotusDocument.fromDelta(delta);
+    var note = NotesStorage.allNotes[widget._noteId];
+    if (widget._isNew) {
+      final Delta delta = Delta()..insert(note + "\n");
+      return NotusDocument.fromDelta(delta);
+    }
+    return NotusDocument.fromJson(jsonDecode(note));
   }
 
   void _saveDocument(BuildContext context) {
-    // Notus documents can be easily serialized to JSON by passing to
-    // `jsonEncode` directly
     final contents = jsonEncode(_controller.document);
-    // For this example we save our document to a temporary file.
-//    final file = File(Directory.systemTemp.path + "/quick_start.json");
-    // And show a snack bar on success.
 //    file.writeAsString(contents).then((_) {
 //      Scaffold.of(context).showSnackBar(SnackBar(content: Text("Saved.")));
 //    });

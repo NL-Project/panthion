@@ -25,7 +25,7 @@ class Log extends StatelessWidget{
                   onPressed:() => Navigator.of(context).push(
                     PageTransition(
                       type: PageTransitionType.rightToLeft,
-                      child: NoteEditor(0,"Write here...", () {}),
+                      child: NoteEditor(0, () {}, false),
                   )))
               ],
 //              shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(bottom: Radius.circular(30))),

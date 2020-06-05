@@ -1,7 +1,11 @@
+import 'dart:convert';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:panthion/note_editor.dart';
 import 'package:panthion/notes_storage.dart';
+import 'package:quill_delta/quill_delta.dart';
 
 import 'home_button.dart';
 import 'mark_button.dart';
@@ -27,19 +31,18 @@ class NotePreview extends StatelessWidget {
         onTap: () => Navigator.of(context).push(
           PageTransition(
             type: PageTransitionType.rightToLeft,
-            child: NoteEditor(_id, _content, _notifyParent),
+            child: NoteEditor(_id, _notifyParent, false),
           ),
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListTile(
             title: Text(
-              _content,
+              jsonDecode(_content)[0]['insert'].trim(),
               style: TextStyle(fontSize: 32),
-            ),
-            subtitle: Text(
-              _content,
-              style: TextStyle(fontSize: 24),
+              softWrap: false,
+              maxLines: 1,
+              overflow: TextOverflow.fade,
             ),
           ),
         ),
@@ -61,7 +64,7 @@ class _NotesState extends State<Notes> {
         preferredSize: Size.fromHeight(65),
         child: AppBar(
           flexibleSpace: FlexibleSpaceBar(
-            title: Text("Marks"),
+            title: Text("Notes"),
             centerTitle: true,
           ),
         ),
@@ -72,7 +75,7 @@ class _NotesState extends State<Notes> {
         child: FittedBox(
           child: FloatingActionButton(
             onPressed: () {
-              NotesStorage.createNote("Empty note");
+              NotesStorage.createNote(jsonEncode(Delta()..insert("Empty note" + "\n")));
               setState(() {});
             },
             child: Icon(
