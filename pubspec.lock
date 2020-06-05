@@ -134,27 +134,27 @@ packages:
       name: path_provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.7"
+    version: "1.6.9"
   path_provider_macos:
     dependency: transitive
     description:
       name: path_provider_macos
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.4+2"
+    version: "0.0.4+3"
   path_provider_platform_interface:
     dependency: transitive
     description:
       name: path_provider_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.1"
+    version: "1.0.2"
   pdftron_flutter:
     dependency: "direct main"
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "780a594969136de735fc1dfdea1468c1ab39411f"
+      resolved-ref: "9fe38d26ce0ef584b300105776f59a65afac5868"
       url: "git://github.com/PDFTron/pdftron-flutter.git"
     source: git
     version: "0.0.1"
