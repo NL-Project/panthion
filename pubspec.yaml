@@ -14,7 +14,7 @@ description: A new Flutter application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
   flutter:
@@ -30,6 +30,8 @@ dependencies:
   permission_handler: '3.0.1'
   page_transition: ^1.1.5
   table_calendar: ^2.2.3
+  zefyr: ^0.11.0
+  quill_delta: ^1.0.2
 
 dev_dependencies:
   flutter_test:
@@ -41,6 +43,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  assets:
+    - assets/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
