@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'all_marks.dart';
+import '../utils/all_marks.dart';
 
 class OldMark extends StatefulWidget {
 

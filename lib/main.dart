@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:panthion/home.dart';
+import 'package:panthion/ui/home.dart';
 
 const String home = "Home";
 

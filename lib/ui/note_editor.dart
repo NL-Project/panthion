@@ -1,19 +1,14 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:panthion/notes_storage.dart';
-import 'package:quill_delta/quill_delta.dart';
+import 'package:panthion/models/note.dart';
 import 'package:zefyr/zefyr.dart';
 
-import 'all_marks.dart';
-
 class NoteEditor extends StatefulWidget {
-  final int _noteId;
-  final Function() _notifyParent;
-  final bool _isNew;
+  final Note _note;
+  final Function(Note) _onSave;
 
-  NoteEditor(this._noteId, this._notifyParent, this._isNew);
+  NoteEditor(this._note, this._onSave);
 
   @override
   State<StatefulWidget> createState() => _NoteEditorState();
@@ -38,14 +33,7 @@ class _NoteEditorState extends State<NoteEditor> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Note Editor"),
-        actions: <Widget>[
-          Builder(
-            builder: (context) => IconButton(
-              icon: Icon(Icons.save),
-              onPressed: () => _saveDocument(context),
-            ),
-          )
-        ],
+
       ),
       body: ZefyrScaffold(
         child: ZefyrEditor(
@@ -59,20 +47,18 @@ class _NoteEditorState extends State<NoteEditor> {
 
   /// Loads the document to be edited in Zefyr.
   NotusDocument _loadDocument() {
-    var note = NotesStorage.allNotes[widget._noteId];
-    if (widget._isNew) {
-      final Delta delta = Delta()..insert(note + "\n");
-      return NotusDocument.fromDelta(delta);
-    }
-    return NotusDocument.fromJson(jsonDecode(note));
+    return NotusDocument.fromJson(jsonDecode(widget._note.text));
   }
 
-  void _saveDocument(BuildContext context) {
+  void _saveDocument() {
     final contents = jsonEncode(_controller.document);
-//    file.writeAsString(contents).then((_) {
-//      Scaffold.of(context).showSnackBar(SnackBar(content: Text("Saved.")));
-//    });
-    NotesStorage.updateNote(widget._noteId, contents);
-    widget._notifyParent();
+    widget._note.text = contents;
+    widget._onSave(widget._note);
+  }
+
+  @override
+  void dispose() {
+    _saveDocument();
+    super.dispose();
   }
 }

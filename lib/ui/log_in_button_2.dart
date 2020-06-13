@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:panthion/all_marks.dart';
-import 'package:panthion/mark_button.dart';
-import 'package:panthion/note_editor.dart';
-import 'package:panthion/home.dart';
+import 'package:panthion/utils/all_marks.dart';
+import 'package:panthion/ui/mark_button.dart';
+import 'package:panthion/ui/note_editor.dart';
+import 'package:panthion/ui/home.dart';
 import 'dart:core';
 class Log extends StatelessWidget{
 
@@ -25,7 +25,7 @@ class Log extends StatelessWidget{
                   onPressed:() => Navigator.of(context).push(
                     PageTransition(
                       type: PageTransitionType.rightToLeft,
-                      child: NoteEditor(0, () {}, false),
+//                      child: NoteEditor(0, () {}, false),
                   )))
               ],
 //              shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(bottom: Radius.circular(30))),
